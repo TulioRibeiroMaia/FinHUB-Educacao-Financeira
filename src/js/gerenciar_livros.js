@@ -33,10 +33,36 @@ function retornaDadoHTLM(dadosLivro){
     var autora = row.insertCell(1);
     var acoes = row.insertCell(2);
 
+    var id = i;
+
     titulo.innerHTML = array[i].titulo;
     autora.innerHTML = array[i].autora;
-    acoes.innerHTML = 'acao';
+    // TO-DO: colocar o id do botão dinâmico
+    acoes.innerHTML = "<button type='button' class='btn btn-primary' id='id' onclick='editarLivro()' >Editar</button> &nbsp <button type='button' class='btn btn-danger' id='id' onclick='excluirLivro()' >Excluir</button>";
+    
+    
   }
+}
+
+function editarLivro() {  
+  let dadosLivro = JSON.parse(localStorage.getItem('livro'));
+  let array = Object.values(dadosLivro);
+  // console.log(array[1]);
+
+ //retorna o id do botão
+  document.querySelectorAll("button").forEach( function(button) {
+    
+    button.addEventListener("click", function(event) {
+    const el = event.target || event.srcElement;
+    const id = el.id;
+    console.log(id);
+  });
+  
+});
+}
+
+function excluirLivro() {
+  console.log("excluir");
 }
 
 function main() {
